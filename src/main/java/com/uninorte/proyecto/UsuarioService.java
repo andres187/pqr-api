@@ -7,6 +7,7 @@ package com.uninorte.proyecto;
 
 import java.io.File;
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 
 /**
  *
@@ -17,6 +18,7 @@ public interface UsuarioService {
     List<Usuario> listar();
     Usuario add(Usuario u);
     void archivo();
+    LoginResponse login(Credencial credencial);
             
     
 }

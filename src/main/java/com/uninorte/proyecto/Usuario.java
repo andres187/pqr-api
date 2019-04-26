@@ -12,7 +12,7 @@ import javax.persistence.*;
  *
  * @author Andres Bolivar
  */
-@Entity
+@Entity(name = "users")
 @Table(name = "users")
 public class Usuario implements Serializable {
     
@@ -32,7 +32,6 @@ public class Usuario implements Serializable {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }

@@ -6,7 +6,9 @@
 package com.uninorte.proyecto;
 
 import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -15,5 +17,13 @@ import org.springframework.data.repository.Repository;
 public interface UsuarioRepositorio extends Repository<Usuario, Integer> {
     List<Usuario> findAll();
     Usuario save(Usuario u);
+    
+    /**
+     *
+     * @param usuario
+     * @return
+     */
+    @Query("select u  from users u  where u.usuario=:usuario")
+		Usuario getUserByUsuario(@Param("usuario") String usuario);
     
 }
