@@ -61,6 +61,14 @@ public class Controller {
         Map<String, Boolean> response = new HashMap<>();
         response.put("ruta", Boolean.TRUE);
         return response;
+    }   
+    
+    @GetMapping("/upload")
+    public Map<String, Boolean> upload(){
+        service.upload();
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("upload", Boolean.TRUE);
+        return response;
     }        
     
     

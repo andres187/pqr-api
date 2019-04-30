@@ -22,6 +22,7 @@ public interface UsuarioService {
     Usuario add(Usuario u);
     void archivo();
     LoginResponse login(Credencial credencial);
+    void upload();
             
     
 }

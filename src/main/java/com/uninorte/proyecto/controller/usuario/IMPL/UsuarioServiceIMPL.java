@@ -11,6 +11,7 @@ import com.uninorte.proyecto.controller.usuario.interfaces.UsuarioRepositorio;
 import com.uninorte.proyecto.controller.usuario.interfaces.UsuarioService;
 import com.uninorte.proyecto.entities.usuario.Usuario;
 import com.uninorte.proyecto.entities.usuario.Credencial;
+import com.uninorte.proyecto.musica.Subir;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.io.BufferedWriter;
@@ -217,5 +218,11 @@ public class UsuarioServiceIMPL implements UsuarioService {
 		Date date = new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME);
 		return date;
 	}
+
+    @Override
+    public void upload() {
+        Subir subir = new Subir();
+        subir.ejecutar();
+    }
     
 }
