@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.uninorte.proyecto;
+package com.uninorte.proyecto.controller.usuario.interfaces;
 
+import com.uninorte.proyecto.entities.usuario.Usuario;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;

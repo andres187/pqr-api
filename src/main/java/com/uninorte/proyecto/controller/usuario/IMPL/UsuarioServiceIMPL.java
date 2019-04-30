@@ -3,8 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.uninorte.proyecto;
+package com.uninorte.proyecto.controller.usuario.IMPL;
 
+import com.uninorte.proyecto.controller.usuario.LoginResponse;
+import com.uninorte.proyecto.controller.usuario.security.SecurityConstants;
+import com.uninorte.proyecto.controller.usuario.interfaces.UsuarioRepositorio;
+import com.uninorte.proyecto.controller.usuario.interfaces.UsuarioService;
+import com.uninorte.proyecto.entities.usuario.Usuario;
+import com.uninorte.proyecto.entities.usuario.Credencial;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.io.BufferedWriter;

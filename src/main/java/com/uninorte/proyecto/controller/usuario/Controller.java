@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.uninorte.proyecto;
+package com.uninorte.proyecto.controller.usuario;
 
+import com.uninorte.proyecto.entities.usuario.Credencial;
+import com.uninorte.proyecto.controller.usuario.security.SecurityConstants;
+import com.uninorte.proyecto.entities.usuario.Usuario;
+import com.uninorte.proyecto.controller.usuario.interfaces.UsuarioService;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Andres Bolivar
  */
-@CrossOrigin(origins = "https://uninorte-proyecto.herokuapp.com", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping({"/usuarios"})
 public class Controller {

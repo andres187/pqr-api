@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.uninorte.proyecto;
+package com.uninorte.proyecto.controller.usuario.interfaces;
 
+import com.uninorte.proyecto.controller.usuario.LoginResponse;
+import com.uninorte.proyecto.entities.usuario.Usuario;
+import com.uninorte.proyecto.entities.usuario.Credencial;
 import java.io.File;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
