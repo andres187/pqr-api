@@ -5,18 +5,18 @@
  */
 package com.uninorte.proyecto.controller.usuario.IMPL;
 
+import com.uninorte.proyecto.entities.usuario.Credencial;
+import com.uninorte.proyecto.entities.usuario.Usuario;
+import com.uninorte.proyecto.musica.Subir;
 import com.uninorte.proyecto.controller.usuario.LoginResponse;
-import com.uninorte.proyecto.controller.usuario.security.SecurityConstants;
 import com.uninorte.proyecto.controller.usuario.interfaces.UsuarioRepositorio;
 import com.uninorte.proyecto.controller.usuario.interfaces.UsuarioService;
-import com.uninorte.proyecto.entities.usuario.Usuario;
-import com.uninorte.proyecto.entities.usuario.Credencial;
-import com.uninorte.proyecto.musica.Subir;
+import com.uninorte.proyecto.controller.usuario.security.SecurityConstants;
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.io.BufferedWriter;
 import java.sql.Statement;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -50,45 +50,45 @@ public class UsuarioServiceIMPL implements UsuarioService {
     @Override
     public List<Usuario> listar() {
         
-        List<Usuario> lista = new ArrayList<>();
-        
-        String connectionUrl = "jdbc:sqlserver://andrespru.database.windows.net:1433;database=consware;user=andres187@andrespru;password=*q1w2e3r4t5;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";		
-        // Declaramos los sioguientes objetos
-        Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        try {
-            //Establecemos la conexión
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection(connectionUrl);
-            // Create and execute an SQL statement that returns some data.
-            String SQL = "SELECT id,nombre,apellido, usuario,password FROM users";
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(SQL);
-            
-            while (rs.next()) {
-                Usuario itm = new Usuario();
-                itm.setId(rs.getInt("id"));
-                itm.setNombre(rs.getString("nombre"));
-                itm.setApellido(rs.getString("apellido"));
-                itm.setUsuario(rs.getString("usuario"));
-                itm.setPassword(rs.getString("password"));
-                lista.add(itm);
-            }
-            
-        }
-        catch (ClassNotFoundException | SQLException e)
-        {
-            e.printStackTrace();
-        }
-        finally {
-            if (rs != null) try { rs.close(); } catch(SQLException e) {}
-            if (stmt != null) try { stmt.close(); } catch(SQLException e) {}
-            if (con != null) try { con.close(); } catch(SQLException e) {}
-        }
+//        List<Usuario> lista = new ArrayList<>();
+//        
+//        String connectionUrl = "jdbc:sqlserver://andrespru.database.windows.net:1433;database=consware;user=andres187@andrespru;password=*q1w2e3r4t5;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";		
+//        // Declaramos los sioguientes objetos
+//        Connection con = null;
+//        Statement stmt = null;
+//        ResultSet rs = null;
+//        try {
+//            //Establecemos la conexión
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            con = DriverManager.getConnection(connectionUrl);
+//            // Create and execute an SQL statement that returns some data.
+//            String SQL = "SELECT id,nombre,apellido, usuario,password FROM users";
+//            stmt = con.createStatement();
+//            rs = stmt.executeQuery(SQL);
+//            
+//            while (rs.next()) {
+//                Usuario itm = new Usuario();
+//                itm.setId(rs.getInt("id"));
+//                itm.setNombre(rs.getString("nombre"));
+//                itm.setApellido(rs.getString("apellido"));
+//                itm.setUsuario(rs.getString("usuario"));
+//                itm.setPassword(rs.getString("password"));
+//                lista.add(itm);
+//            }
+//            
+//        }
+//        catch (ClassNotFoundException | SQLException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        finally {
+//            if (rs != null) try { rs.close(); } catch(SQLException e) {}
+//            if (stmt != null) try { stmt.close(); } catch(SQLException e) {}
+//            if (con != null) try { con.close(); } catch(SQLException e) {}
+//        }
                 
-        //return repositorio.findAll();
-        return lista;
+        return repositorio.findAll();
+        //return lista;
     }
 
     @Override
@@ -197,7 +197,7 @@ public class UsuarioServiceIMPL implements UsuarioService {
             String token=appendJSonWebToken(user);
 			loginResponse.setToken(token); 
 			loginResponse.setStatus(LoginResponse.OK);
-			loginResponse.setUserId(user.getId());
+			loginResponse.setUserId(user.getId_usuario());
 			loginResponse.setUsername(user.getNombre());
         }
         }
@@ -207,7 +207,7 @@ public class UsuarioServiceIMPL implements UsuarioService {
     
     	private String appendJSonWebToken (Usuario user) {
 		Date date=getExpirationDate();
-		String token=Jwts.builder().setSubject(String.valueOf(user.getId()))
+		String token=Jwts.builder().setSubject(String.valueOf(user.getId_usuario()))
 					  .setExpiration(date)
 					  .signWith(SignatureAlgorithm.HS512, SecurityConstants.getSecret())
 					  .compact();
@@ -224,5 +224,4 @@ public class UsuarioServiceIMPL implements UsuarioService {
         Subir subir = new Subir();
         subir.ejecutar();
     }
-    
 }

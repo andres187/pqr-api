@@ -31,8 +31,8 @@ public class Subir {
                 container.createIfNotExists();
 
                 // Upload an image file.
-                CloudBlockBlob blob = container.getBlockBlobReference("image1.jpg");
-                File sourceFile = new File("c:\\myimages\\image1.jpg");
+                CloudBlockBlob blob = container.getBlockBlobReference("toda.mp3");
+                File sourceFile = new File("c:\\mymusic\\toda.mp3");
                 blob.upload(new FileInputStream(sourceFile), sourceFile.length());
 
                 // Download the image file.

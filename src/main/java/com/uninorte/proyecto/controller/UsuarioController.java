@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.uninorte.proyecto.controller.usuario;
-
+package com.uninorte.proyecto.controller;
 import com.uninorte.proyecto.entities.usuario.Credencial;
-import com.uninorte.proyecto.controller.usuario.security.SecurityConstants;
 import com.uninorte.proyecto.entities.usuario.Usuario;
+import com.uninorte.proyecto.controller.usuario.LoginResponse;
 import com.uninorte.proyecto.controller.usuario.interfaces.UsuarioService;
-import java.io.File;
+import com.uninorte.proyecto.controller.usuario.security.SecurityConstants;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,17 +30,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
-@RequestMapping({"/usuarios"})
-public class Controller {
+@RequestMapping({"/api"})
+public class UsuarioController {
     
     @Autowired
     UsuarioService service;
     
-    @GetMapping
+    @GetMapping({"/usuarios"})
     public List<Usuario> listar(){
         return service.listar();
     }
-    @PostMapping
+    
+    
+    @PostMapping({"/usuarios"})
     public Usuario agregar(@RequestBody Usuario u){
         return service.add(u);
     }
