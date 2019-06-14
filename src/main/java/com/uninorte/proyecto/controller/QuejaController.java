@@ -20,7 +20,7 @@ import com.uninorte.proyecto.entities.queja.Queja;
 import com.uninorte.proyecto.entities.usuario.Usuario;
 import com.uninorte.proyecto.whatsapp.Whatsapp;
 
-@CrossOrigin(origins = "https://uninorte-pqr.herokuapp.com", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping({"/api"})
 public class QuejaController {

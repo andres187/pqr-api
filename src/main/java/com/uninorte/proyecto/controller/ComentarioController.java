@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uninorte.proyecto.controller.queja.interfaces.ComentarioService;
 import com.uninorte.proyecto.entities.queja.Comentario;
 
-@CrossOrigin(origins = "https://uninorte-pqr.herokuapp.com", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping({"/api"})
 public class ComentarioController {
